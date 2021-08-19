@@ -1,6 +1,11 @@
 import os
-for Story in range(0,52):
-  Story = "{0:02d}".format(Story)
-  if os.path.exists(f'Story/{Story}.jpeg'):
-   os.rename(f'/workspace/volume1/Story/{Story}.jpeg',f'/workspace/volume1/Story/{Story}.png')
-   print(os.path.exists('/workspace/volume1/Story/{Story}.png'))
+
+findDir = "/workspace/volume1/Story"
+files = os.listdir(findDir)
+jpegFiles = [file for file in files if file.endswith(".jpeg")]
+
+for jpegFile in jpegFiles:
+    os.rename(
+        f'{findDir}/{jpegFile}',
+        f'{findDir}/{jpegFile.replace(".jpeg",".png")}'
+    )
